@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import tacos.Ingredient;
 import tacos.Ingredient.Type;
 import tacos.Taco;
+import tacos.TacoOrder;
 
 @Slf4j
 @Controller
@@ -41,11 +42,12 @@ public void addIngredientsToModel(Model model) {
 	for(Type type: types) {
 		model.addAttribute(type.toString().toLowerCase(), 
 				           filterByType(ingredients, type));
+		}
 	}
-	
+
 	@ModelAttribute(name = "tacoOrder")
 	public TacoOrder order() {
-		return new TacoOrder;
+		return new TacoOrder();
 	}
 	
 	@ModelAttribute(name = "taco")
@@ -66,8 +68,5 @@ public void addIngredientsToModel(Model model) {
 				.collect(Collectors.toList());
 	}
 	
-}	
-	
 }
 	
-}
